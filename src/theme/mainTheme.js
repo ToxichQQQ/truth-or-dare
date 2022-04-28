@@ -1,0 +1,7 @@
+export const THEME = {
+    BACKGROUND_COLOR: '#7e99b9',
+    TEXT_COLOR:'#DDD8B8',
+    SECONDARY_COLOR:'#696495',
+    BUTTON_COLOR:'#72528A',
+    CARD_COLOR:"#542E71"
+}
