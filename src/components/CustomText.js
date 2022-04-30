@@ -3,10 +3,11 @@ import {Text, StyleSheet, View} from 'react-native'
 import {THEME} from "../theme/mainTheme";
 
 
-export function CustomText({size, text, weight}) {
+export function CustomText({size, text, weight,style}) {
     return <Text style={{
         fontSize: size,
         color: THEME.TEXT_COLOR,
-        fontFamily: weight === 'bold' ? 'main-bold' : weight === 'light' ? 'main-light' : 'main-regular'
+        fontFamily: weight === 'bold' ? 'main-bold' : weight === 'light' ? 'main-light' : 'main-regular',
+        ...style
     }}>{text}</Text>
 }

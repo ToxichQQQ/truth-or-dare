@@ -1,0 +1,2 @@
+export const ADD_NEW_PLAYER = 'ADD_NEW_PLAYER'
+export const DELETE_PLAYER = "DELETE_PLAYER"

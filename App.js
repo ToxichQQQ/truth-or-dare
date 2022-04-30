@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import {MainScreen} from "./src/screens/MainScreen"
 import AppLoading from 'expo-app-loading'
 import {bootstrap} from "./src/bootstrap";
+import {Provider} from "react-redux";
+import {store} from "./src/redux";
 
 export default function App() {
   const [isReady,setReady] = useState(false)
@@ -15,7 +17,7 @@ export default function App() {
     />
   }
 
-  return <MainScreen/>
+  return <Provider store={store}><MainScreen/></Provider>
 }
 
 const styles = StyleSheet.create({
