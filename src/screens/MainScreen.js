@@ -11,7 +11,7 @@ import {CustomPlayerInput} from "../components/CustomPlayerInput";
 
 
 
-export function MainScreen() {
+export function MainScreen({navigation}) {
     const [isMale,setMale] = useState(true)
     const [inputValue,setInputValue] = useState('')
 
@@ -30,6 +30,10 @@ export function MainScreen() {
         Keyboard.dismiss()
     }
 
+    const handleStartDame = () => {
+        navigation.navigate('Mode')
+    }
+
     return <View style={styles.container}>
         <CustomText style={styles.header} size={64} text='#TRUTHORDARE' weight='bold'/>
         <View style={styles.center}>
@@ -43,7 +47,7 @@ export function MainScreen() {
                 keyExtractor={player => player.id}
             />
         <View style={styles.center}>
-            <CustomButton disable={!players.length} textStyle={styles.text} buttonStyle={styles.playBtn} onClick={() => console.log('eeee')} title={langTheme.PLAY}/>
+            <CustomButton disable={!players.length} textStyle={styles.text} buttonStyle={styles.playBtn} onClick={() => handleStartDame()} title={langTheme.PLAY}/>
         </View>
     </View>
 }

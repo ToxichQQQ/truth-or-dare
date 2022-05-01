@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {actionGetQuestion} from "../redux/game/actions";
 
 
-export function GameScreen() {
+export function GameScreen({navigation}) {
     const dispatch = useDispatch()
     const selectedItem = useSelector(state => state.game.selectedItem)
     const mode = useSelector(state => state.mode.selectedMode)
@@ -17,7 +17,11 @@ export function GameScreen() {
     const handleRefreshAction = () =>{
         dispatch(actionGetQuestion(mode.searchName))
     }
-console.log(questionLen)
+
+    const handleStopGame = () => {
+        navigation.navigate('Main')
+    }
+
     const cardStyle = () => {
         if (questionLen >51) {
             return {...styles.card}
@@ -41,7 +45,7 @@ console.log(questionLen)
                           textStyle={styles.doneButtonText}/>
         </View>
         <View style={styles.helpPanel}>
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={() => handleStopGame()}>
                 <View style={styles.iconsContainer}>
                     <Image source={require('../../assets/icons/stop.png')}/>
                 </View>

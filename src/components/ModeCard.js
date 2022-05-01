@@ -5,11 +5,12 @@ import {CustomText} from "./CustomText";
 import {useDispatch} from "react-redux";
 import {actionChooseMode} from "../redux/gamemode/actions";
 
-export function ModeCard({mode}) {
+export function ModeCard({mode,nextScreen}) {
     const dispatch = useDispatch()
 
     const handleChooseMode = () => {
         dispatch(actionChooseMode(mode.id))
+        nextScreen()
     }
 
     return (

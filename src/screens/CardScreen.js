@@ -8,18 +8,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {actionGetAction, actionGetQuestion} from "../redux/game/actions";
 
 
-export function CardScreen() {
+export function CardScreen({navigation}) {
     const dispatch = useDispatch()
     const mode = useSelector(state => state.mode.selectedMode)
 
 
 
-    const handleGetQuestion = () => {
-        dispatch(actionGetQuestion(mode.searchName))
+    const handleGetQuestion = async () => {
+       await dispatch(actionGetQuestion(mode.searchName))
+        await navigation.navigate('Game')
     }
 
-    const handleGetAction = () => {
-        dispatch(actionGetAction(mode.searchName))
+    const handleGetAction = async () => {
+       await dispatch(actionGetAction(mode.searchName))
+        await navigation.navigate('Game')
     }
 
 

@@ -11,7 +11,7 @@ const initialState = {
 
     ],
     actions: [],
-    selectedItem: {categories:['family','hot'],title:'  слова начинающиеся с первой буквы твоего имени'},
+    selectedItem: null,
     selectedAction: null
 }
 
