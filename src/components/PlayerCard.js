@@ -7,12 +7,12 @@ import {actionDeletePlayer} from "../redux/players/actions";
 
 
 export function PlayerCard({player}){
-    let image = require('../../assets/icon_boy.png')
+    let image = require('../../assets/icons/icon_boy.png')
     const dispatch = useDispatch()
 
 
     if (!player.isMale) {
-        image = require('../../assets/icon_girl.png')
+        image = require('../../assets/icons/icon_girl.png')
     }
 
     const handleDeletePlayer = () => {
@@ -21,7 +21,7 @@ export function PlayerCard({player}){
 
     return <View style={styles.card}>
         <Image style={styles.img} source={image}/>
-        <CustomText size={15} text={player.name} weight='light' style={styles.cardText}/>
+        <CustomText size={15} text={player.name} weight='regular' style={styles.cardText}/>
         <TouchableNativeFeedback onPress={handleDeletePlayer}>
         <Image style={styles.delIcon} source={require('../../assets/delete_icon.png')}/>
         </TouchableNativeFeedback>

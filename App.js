@@ -5,6 +5,8 @@ import AppLoading from 'expo-app-loading'
 import {bootstrap} from "./src/bootstrap";
 import {Provider} from "react-redux";
 import {store} from "./src/redux";
+import {ModeScreen} from "./src/screens/ModeScreen";
+import {CardScreen} from "./src/screens/CardScreen";
 
 export default function App() {
   const [isReady,setReady] = useState(false)
@@ -17,7 +19,7 @@ export default function App() {
     />
   }
 
-  return <Provider store={store}><MainScreen/></Provider>
+  return <Provider store={store}><CardScreen/></Provider>
 }
 
 const styles = StyleSheet.create({

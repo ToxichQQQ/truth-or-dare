@@ -8,11 +8,11 @@ import {useDispatch} from "react-redux";
 export function CustomPlayerInput({isMale,setMale,inputValue,setInputValue,deleteTempData}) {
     const dispatch = useDispatch()
 
-    let image = require('../../assets/icon_boy.png')
+    let image = require('../../assets/icons/icon_boy.png')
 
 
     if (!isMale) {
-        image = require('../../assets/icon_girl.png')
+        image = require('../../assets/icons/icon_girl.png')
     }
 
     const changeSex = () => {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop:7,
         color:THEME.TEXT_COLOR,
         fontSize:15,
-        fontFamily:'main-light'
+        fontFamily:'main-regular'
     },
     img:{
         marginTop: 3,
