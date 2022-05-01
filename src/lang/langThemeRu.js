@@ -11,5 +11,6 @@ export const langTheme = {
     'YOUR_TURN':'твой ход',
     'TRUTH':'Правда',
     'DARE':'Действие',
-    'RANDOM_CHOICE':'Случайный выбор'
+    'RANDOM_CHOICE':'Случайный выбор',
+    'DONE':'Готово'
 }

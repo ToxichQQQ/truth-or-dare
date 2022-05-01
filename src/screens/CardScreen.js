@@ -11,7 +11,6 @@ import {actionGetAction, actionGetQuestion} from "../redux/game/actions";
 export function CardScreen() {
     const dispatch = useDispatch()
     const mode = useSelector(state => state.mode.selectedMode)
-    const selectedItem = useSelector(state => state.game.selectedItem)
 
 
 
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
     buttonsContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        paddingTop: 60
+        paddingTop: 50
     },
     button: {
         width: 135

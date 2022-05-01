@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import {store} from "./src/redux";
 import {ModeScreen} from "./src/screens/ModeScreen";
 import {CardScreen} from "./src/screens/CardScreen";
+import {GameScreen} from "./src/screens/GameScreen";
 
 export default function App() {
   const [isReady,setReady] = useState(false)
@@ -19,7 +20,7 @@ export default function App() {
     />
   }
 
-  return <Provider store={store}><CardScreen/></Provider>
+  return <Provider store={store}><GameScreen/></Provider>
 }
 
 const styles = StyleSheet.create({

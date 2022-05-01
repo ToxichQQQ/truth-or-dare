@@ -22,7 +22,13 @@ const initialState = {
         },
         {id: '5', title: 'Family',searchName:'family', desc: langTheme.FAMILY_DESC, icon: require('../../../assets/icons/famile_mode.png')}
     ],
-    selectedMode: null
+    selectedMode:   {
+        id: '2',
+        title: 'Hot-Party',
+        searchName: 'hot',
+        desc: langTheme.HOT_PARTY_DESC,
+        icon: require('../../../assets/icons/hot_party_mode.png')
+    }
 }
 
 export const modeReducer = (state = initialState, action) => {
