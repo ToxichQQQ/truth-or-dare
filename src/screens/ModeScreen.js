@@ -1,16 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {FlatList,View,Text,StyleSheet} from 'react-native'
 import {THEME} from "../theme/mainTheme";
 import {CustomText} from "../components/CustomText";
 import {langTheme} from "../lang/langThemeRu";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ModeCard} from "../components/ModeCard";
+import {actionGetRandomPlayer} from "../redux/players/actions";
 
 
 export function ModeScreen({navigation}) {
     const gameModes = useSelector(state => state.mode.gameModes)
+    const dispatch = useDispatch()
 
     const handleSelectMode = () => {
+        dispatch(actionGetRandomPlayer())
         navigation.navigate('Card')
     }
 

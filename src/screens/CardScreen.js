@@ -5,36 +5,45 @@ import {CustomText} from "../components/CustomText";
 import {langTheme} from "../lang/langThemeRu";
 import {CustomButton} from "../components/CustomButton";
 import {useDispatch, useSelector} from "react-redux";
-import {actionGetAction, actionGetQuestion} from "../redux/game/actions";
+import {actionGetAction, actionGetQuestion} from "../redux/game/actions";;
 
 
 export function CardScreen({navigation}) {
     const dispatch = useDispatch()
     const mode = useSelector(state => state.mode.selectedMode)
-
-
+    const player = useSelector(state => state.player.currentPlayer)
+    const players = useSelector(state => state.player.players)
 
     const handleGetQuestion = async () => {
-       await dispatch(actionGetQuestion(mode.searchName))
+        await dispatch(actionGetQuestion(mode.searchName,players,players))
         await navigation.navigate('Game')
     }
 
     const handleGetAction = async () => {
-       await dispatch(actionGetAction(mode.searchName))
+        await dispatch(actionGetAction(mode.searchName,players,players))
         await navigation.navigate('Game')
     }
 
+    const handleGetRandomItem = async () => {
+        if(Math.random() > 0.5){
+            await dispatch(actionGetQuestion(mode.searchName,players,players))
+        }else{
+             await dispatch(actionGetAction(mode.searchName,players,players))
+        }
+
+        await navigation.navigate('Game')
+    }
 
     return <View style={styles.container}>
         <View style={styles.card}>
-            <CustomText text='Валерия' size={36} weight='regular' style={styles.name}/>
+            <CustomText text={player.name} size={36} weight='regular' style={styles.name}/>
             <CustomText text={langTheme.YOUR_TURN} size={18} weight='regular' style={styles.helperText}/>
             <View style={styles.buttonsContainer}>
                 <CustomButton title={langTheme.TRUTH} buttonStyle={styles.button} textStyle={styles.buttonText} onClick={handleGetQuestion}/>
                 <CustomButton title={langTheme.DARE} buttonStyle={styles.button} textStyle={styles.buttonText} onClick={handleGetAction}/>
             </View>
             <CustomButton title={langTheme.RANDOM_CHOICE} buttonStyle={styles.randomButton}
-                          textStyle={styles.randomButtonText}/>
+                          textStyle={styles.randomButtonText} onClick={handleGetRandomItem}/>
         </View>
     </View>
 }

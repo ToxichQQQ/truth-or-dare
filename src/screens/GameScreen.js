@@ -5,47 +5,41 @@ import {CustomText} from "../components/CustomText";
 import {langTheme} from "../lang/langThemeRu";
 import {CustomButton} from "../components/CustomButton";
 import {useDispatch, useSelector} from "react-redux";
-import {actionGetQuestion} from "../redux/game/actions";
+import {actionRefreshItem} from "../redux/game/actions";
+import {actionGetRandomPlayer} from "../redux/players/actions";
 
 
 export function GameScreen({navigation}) {
     const dispatch = useDispatch()
     const selectedItem = useSelector(state => state.game.selectedItem)
     const mode = useSelector(state => state.mode.selectedMode)
-    const questionLen = selectedItem.title.length
+    const players = useSelector(state => state.player.players)
+    const player = useSelector(state => state.player.currentPlayer)
 
     const handleRefreshAction = () =>{
-        dispatch(actionGetQuestion(mode.searchName))
+        dispatch(actionRefreshItem(mode.searchName,players,player))
     }
 
     const handleStopGame = () => {
-        navigation.navigate('Main')
+        (() => {
+            navigation.navigate('Main')
+        })()
     }
 
-    const cardStyle = () => {
-        if (questionLen >51) {
-            return {...styles.card}
-        } else {
-            return {...styles.card, justifyContent: 'center'}
-        }
+    const handleDoneItem = () => {
+        dispatch(actionGetRandomPlayer())
+        navigation.navigate('Card')
     }
 
-    const textStyle = () => {
-        if (questionLen > 50) {
-            return {...styles.question}
-        } else {
-            return {...styles.question, paddingTop: 0}
-        }
-    }
 
     return <View style={styles.container}>
-        <View style={cardStyle()}>
-            <CustomText text={selectedItem.title} size={22} weight='regular' style={textStyle()}/>
+        <View style={styles.card}>
+            <CustomText text={selectedItem.title} size={22} weight='regular' style={styles.question}/>
             <CustomButton title={langTheme.DONE} buttonStyle={styles.doneButton}
-                          textStyle={styles.doneButtonText}/>
+                          textStyle={styles.doneButtonText} onClick={handleDoneItem}/>
         </View>
         <View style={styles.helpPanel}>
-            <TouchableNativeFeedback onPress={() => handleStopGame()}>
+            <TouchableNativeFeedback onPress={handleStopGame}>
                 <View style={styles.iconsContainer}>
                     <Image source={require('../../assets/icons/stop.png')}/>
                 </View>
